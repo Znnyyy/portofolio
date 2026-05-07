@@ -47,7 +47,9 @@ export default function Navbar() {
             </NavLink>
           ))}
           <a 
-            href="mailto:hello@example.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=z4nny5@gmail.com"
+            target="_blank"
+            rel="noreferrer"
             className="text-sm font-display font-bold tracking-widest text-text-secondary hover:text-text-primary transition-colors"
           >
             CONTACT
@@ -91,7 +93,9 @@ export default function Navbar() {
                 </NavLink>
               ))}
               <a 
-                href="mailto:z4nny5@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=z4nny5@gmail.com"
+                target="_blank"
+                rel="noreferrer"
                 className="text-xl font-display font-bold tracking-widest text-text-secondary"
                 onClick={() => setIsMobileMenuOpen(false)}
               >

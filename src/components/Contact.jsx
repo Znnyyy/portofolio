@@ -1,7 +1,16 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import { Mail, MapPin, ArrowUpRight, Check } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('z4nny5@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section className="py-24 relative z-10 w-full flex items-center justify-center min-h-[60vh] border-t border-border mt-24">
       <div className="w-full max-w-5xl">
@@ -22,7 +31,9 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <motion.a 
-            href="mailto:z4nny5@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=z4nny5@gmail.com"
+            target="_blank"
+            rel="noreferrer"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

@@ -55,7 +55,7 @@ export default function ProfileHero() {
             <a href="https://www.linkedin.com/in/daffa-adzani-24ba913a4/" target="_blank" rel="noreferrer" className="box-structured p-4 text-text-secondary hover:text-text-primary hover:border-text-primary transition-colors">
               <Briefcase size={20} />
             </a>
-            <a href="mailto:z4nny5@gmail.com" className="box-structured p-4 text-text-secondary hover:text-text-primary hover:border-text-primary transition-colors">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=z4nny5@gmail.com" target="_blank" rel="noreferrer" className="box-structured p-4 text-text-secondary hover:text-text-primary hover:border-text-primary transition-colors">
               <Mail size={20} />
             </a>
           </div>
