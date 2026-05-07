@@ -1,71 +1,66 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Code, Briefcase, MessageCircle } from 'lucide-react';
+import { ArrowRight, Code, Briefcase, Mail } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
+import AnimatedPage from './AnimatedPage';
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.2 }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+};
 
 export default function ProfileHero() {
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-      
-      <div className="max-w-6xl w-full mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center z-10">
-        
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="text-green font-mono mb-4 text-lg">Hi, my name is</p>
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 text-slate-lighter tracking-tight">
-            Daffa Adzani.
-          </h1>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-slate">
-            I build things for the web.
-          </h2>
-          <p className="text-slate text-lg max-w-xl mb-10 leading-relaxed">
-            I'm a frontend developer with a passion for crafting responsive and engaging web experiences. I also enjoy designing intuitive UI/UX, focusing on accessibility and human-centered products.
-          </p>
-          
-          <div className="flex items-center gap-6 mb-12">
-            <a href="#projects" className="px-8 py-4 bg-green text-navy font-bold rounded-lg hover:bg-green/90 transition-colors">
-              Check out my work!
-            </a>
-            <div className="hidden sm:flex items-center gap-4">
-              <a href="https://github.com/Znnyyy" className="p-3 text-slate hover:text-green bg-navy-light rounded-full border border-navy-lighter transition-colors">
-                <Code size={20} />
-              </a>
-              <a href="#" className="p-3 text-slate hover:text-green bg-navy-light rounded-full border border-navy-lighter transition-colors">
-                <Briefcase size={20} />
-              </a>
-              <a href="#" className="p-3 text-slate hover:text-green bg-navy-light rounded-full border border-navy-lighter transition-colors">
-                <MessageCircle size={20} />
-              </a>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative hidden lg:block"
-        >
-          <div className="relative w-80 h-80 mx-auto">
-            <div className="absolute inset-0 bg-green border-2 border-green rounded-xl translate-x-5 translate-y-5 transition-transform hover:translate-x-3 hover:translate-y-3"></div>
-            <div className="absolute inset-0 bg-navy-light rounded-xl overflow-hidden z-10 border border-navy-lighter">
-              <div className="w-full h-full object-cover opacity-80 mix-blend-screen bg-[url('https://dummyimage.com/400x500/0a192f/64ffda&text=Profile+Pic')] bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-500"></div>
-              <div className="absolute inset-0 bg-navy/20 hover:bg-transparent transition-colors z-20"></div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
+    <AnimatedPage className="min-h-[85vh] flex flex-col justify-center relative">
       <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate hidden md:block"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
+        variants={container} 
+        initial="hidden" 
+        animate="show" 
+        className="w-full max-w-5xl"
       >
-        <ArrowDown size={24} />
+        <motion.p variants={item} className="text-text-secondary font-display font-bold tracking-[0.2em] uppercase text-sm mb-6 flex items-center gap-4">
+          <span className="w-12 h-[2px] bg-text-primary"></span>
+          Frontend Developer & Designer
+        </motion.p>
+        
+        <motion.h1 variants={item} className="text-5xl md:text-7xl lg:text-8xl font-bold font-display text-text-primary leading-[1.1] mb-8 uppercase tracking-tighter">
+          CRAFTING DIGITAL <br className="hidden md:block" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-text-secondary">EXPERIENCES.</span>
+        </motion.h1>
+        
+        <motion.p variants={item} className="text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed font-sans mb-12">
+          Hi, I'm Daffa Adzani. I am a frontend & full stack developer, UI/UX design.
+        </motion.p>
+        
+        <motion.div variants={item} className="flex flex-wrap items-center gap-6">
+          <NavLink 
+            to="/projects" 
+            className="group flex items-center gap-4 bg-text-primary text-bg-base px-8 py-4 font-display font-bold uppercase tracking-widest transition-all hover:bg-text-secondary"
+          >
+            VIEW PROJECTS
+            <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+          </NavLink>
+          
+          <div className="flex items-center gap-4">
+            <a href="https://github.com/Znnyyy" target="_blank" rel="noreferrer" className="box-structured p-4 text-text-secondary hover:text-text-primary hover:border-text-primary transition-colors">
+              <Code size={20} />
+            </a>
+            <a href="https://www.linkedin.com/in/daffa-adzani-24ba913a4/" target="_blank" rel="noreferrer" className="box-structured p-4 text-text-secondary hover:text-text-primary hover:border-text-primary transition-colors">
+              <Briefcase size={20} />
+            </a>
+            <a href="mailto:z4nny5@gmail.com" className="box-structured p-4 text-text-secondary hover:text-text-primary hover:border-text-primary transition-colors">
+              <Mail size={20} />
+            </a>
+          </div>
+        </motion.div>
       </motion.div>
-    </section>
+    </AnimatedPage>
   );
 }

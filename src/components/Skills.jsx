@@ -1,123 +1,85 @@
 import { motion } from 'framer-motion';
-import { Layers, Database, Code, Layout, Server, PenTool, Users, MessageSquare, Brain, Clock, Target, Lightbulb } from 'lucide-react';
+import { Database, Code, PenTool, Smartphone } from 'lucide-react';
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+};
 
 export default function Skills() {
-  const hardSkills = [
-    { name: 'React.js', icon: <Code size={24} /> },
-    { name: 'JavaScript / ES6+', icon: <Layers size={24} /> },
-    { name: 'TailwindCSS', icon: <Layout size={24} /> },
-    { name: 'Node.js', icon: <Server size={24} /> },
-    { name: 'Database / SQL', icon: <Database size={24} /> },
-    { name: 'UI / UX Design', icon: <PenTool size={24} /> },
-  ];
-
-  const softSkills = [
-    { name: 'Problem Solving', icon: <Brain size={24} /> },
-    { name: 'Communication', icon: <MessageSquare size={24} /> },
-    { name: 'Team Collaboration', icon: <Users size={24} /> },
-    { name: 'Time Management', icon: <Clock size={24} /> },
-    { name: 'Adaptability', icon: <Target size={24} /> },
-    { name: 'Creative Thinking', icon: <Lightbulb size={24} /> },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    },
-  };
-
   return (
-    <section id="skills" className="min-h-screen py-24 bg-navy-light/40 flex items-center justify-center">
-      <div className="max-w-6xl w-full mx-auto px-6">
-        
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-lighter">
-            <span className="text-green">My</span> Skills
-          </h2>
-          <p className="text-slate max-w-2xl mx-auto">
-            Tools and technologies I use to bring ideas to life, along with the interpersonal skills that make teamwork seamless.
-          </p>
+    <section className="py-24 relative z-10 w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="mb-16"
+      >
+        <h2 className="text-4xl md:text-5xl font-display font-bold text-text-primary mb-4 tracking-tighter uppercase">
+          CORE EXPERTISE
+        </h2>
+        <p className="text-lg text-text-secondary max-w-xl font-sans">
+          A rigid foundation of technical precision and robust architecture.
+        </p>
+      </motion.div>
+
+      <motion.div 
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[240px]"
+      >
+
+        <motion.div variants={item} className="box-structured rounded-lg p-8 md:col-span-2 md:row-span-2 flex flex-col justify-between group hover:border-text-secondary transition-colors duration-500">
+          <div>
+            <Code className="text-text-secondary mb-6 group-hover:text-text-primary transition-colors duration-500" size={32} />
+            <h3 className="text-2xl font-display font-bold text-text-primary mb-2 tracking-tight">FRONTEND ENGINEERING</h3>
+            <p className="text-text-secondary font-sans text-sm md:text-base leading-relaxed">Building robust, scalable, and highly interactive user interfaces using modern web technologies.</p>
+          </div>
+          <div className="flex flex-wrap gap-2 mt-8">
+            {['React.js', 'Next.js', 'TypeScript', 'TailwindCSS', 'Framer Motion', 'Redux'].map((tech) => (
+              <span key={tech} className="px-4 py-2 bg-bg-base border border-border rounded-sm text-xs font-bold font-display tracking-widest text-text-secondary">
+                {tech}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <h3 className="text-2xl font-semibold mb-6 flex items-center justify-center md:justify-start text-white">
-              <Code className="mr-3 text-green" size={28} /> Hard Skills
-            </h3>
-            <div className="grid grid-cols-2 gap-4">
-              {hardSkills.map((skill, index) => (
-                <motion.div 
-                  key={index} 
-                  variants={itemVariants}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="bg-navy p-5 rounded-2xl border border-navy-lighter flex flex-col items-center justify-center gap-3 hover:border-green/50 transition-colors group cursor-pointer"
-                >
-                  <div className="text-slate-light group-hover:text-green transition-colors">
-                    {skill.icon}
-                  </div>
-                  <span className="font-medium text-sm text-center text-slate-lighter group-hover:text-white transition-colors">
-                    {skill.name}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+        <motion.div variants={item} className="box-structured rounded-lg p-8 md:col-span-2 flex flex-col justify-center relative overflow-hidden group hover:border-text-secondary transition-colors duration-500">
+          <div className="relative z-10">
+            <PenTool className="text-text-secondary mb-4 group-hover:text-text-primary transition-colors duration-500" size={28} />
+            <h3 className="text-xl font-display font-bold text-text-primary mb-2 tracking-tight">UI / UX DESIGN</h3>
+            <p className="text-text-secondary font-sans text-sm leading-relaxed">Translating complex requirements into intuitive, industrial-grade digital experiences.</p>
+          </div>
+        </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <h3 className="text-2xl font-semibold mb-6 flex items-center justify-center md:justify-start text-white">
-              <Users className="mr-3 text-green" size={28} /> Soft Skills
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {softSkills.map((skill, index) => (
-                <motion.div 
-                  key={index} 
-                  variants={itemVariants}
-                  whileHover={{ scale: 0.95 }}
-                  className="bg-navy p-4 rounded-xl border border-navy-lighter flex items-center gap-4 hover:bg-navy-light transition-all cursor-default"
-                >
-                  <div className="bg-navy-light p-2 rounded-lg text-green">
-                    {skill.icon}
-                  </div>
-                  <span className="font-medium text-slate-lighter">
-                    {skill.name}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+        <motion.div variants={item} className="box-structured rounded-lg p-8 flex flex-col justify-between group hover:border-text-secondary transition-colors duration-500">
+          <Database className="text-text-secondary group-hover:text-text-primary transition-colors duration-500" size={28} />
+          <div>
+            <h3 className="text-lg font-display font-bold text-text-primary tracking-tight">BACKEND & APIs</h3>
+            <p className="text-text-secondary font-sans text-xs mt-1">PostgreSQL, MySQL, Django, Laravel</p>
+          </div>
+        </motion.div>
 
-        </div>
-      </div>
+        <motion.div variants={item} className="box-structured rounded-lg p-8 flex flex-col justify-between group hover:border-text-secondary transition-colors duration-500">
+          <Smartphone className="text-text-secondary group-hover:text-text-primary transition-colors duration-500" size={28} />
+          <div>
+            <h3 className="text-lg font-display font-bold text-text-primary tracking-tight">RESPONSIVE</h3>
+            <p className="text-text-secondary font-sans text-xs mt-1">Mobile-first architecture</p>
+          </div>
+        </motion.div>
+        
+      </motion.div>
     </section>
   );
 }
