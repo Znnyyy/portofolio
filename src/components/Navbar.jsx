@@ -15,6 +15,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'INDEX', href: '/' },
     { name: 'PROJECTS', href: '/projects' },
+    { name: 'CERTIFICATES', href: '/certificates' },
   ];
 
   return (
